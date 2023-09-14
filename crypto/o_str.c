@@ -114,3 +114,12 @@ int OPENSSL_memcmp(const void *v1, const void *v2, size_t n)
 
     return ret;
 }
+
+size_t OPENSSL_strnlen(const char *str, size_t maxlen)
+{
+    const char *p;
+
+    for (p = str; maxlen-- != 0 && *p != '\0'; ++p) ;
+
+    return p - str;
+}

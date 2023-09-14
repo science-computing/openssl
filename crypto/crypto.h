@@ -380,6 +380,8 @@ int CRYPTO_is_mem_check_on(void);
 
 # define OPENSSL_malloc(num)     CRYPTO_malloc((int)num,__FILE__,__LINE__)
 # define OPENSSL_strdup(str)     CRYPTO_strdup((str),__FILE__,__LINE__)
+# define OPENSSL_strndup(str, n) \
+        CRYPTO_strndup((str), n, __FILE__, __LINE__)
 # define OPENSSL_realloc(addr,num) \
         CRYPTO_realloc((char *)addr,(int)num,__FILE__,__LINE__)
 # define OPENSSL_realloc_clean(addr,old_num,num) \
@@ -392,6 +394,8 @@ int CRYPTO_is_mem_check_on(void);
 # define OPENSSL_malloc_locked(num) \
         CRYPTO_malloc_locked((int)num,__FILE__,__LINE__)
 # define OPENSSL_free_locked(addr) CRYPTO_free_locked(addr)
+
+size_t OPENSSL_strnlen(const char *str, size_t maxlen);
 
 const char *SSLeay_version(int type);
 unsigned long SSLeay(void);
@@ -533,6 +537,7 @@ void *CRYPTO_malloc_locked(int num, const char *file, int line);
 void CRYPTO_free_locked(void *ptr);
 void *CRYPTO_malloc(int num, const char *file, int line);
 char *CRYPTO_strdup(const char *str, const char *file, int line);
+char *CRYPTO_strndup(const char *str, size_t s, const char *file, int line);
 void CRYPTO_free(void *ptr);
 void *CRYPTO_realloc(void *addr, int num, const char *file, int line);
 void *CRYPTO_realloc_clean(void *addr, int old_num, int num, const char *file,

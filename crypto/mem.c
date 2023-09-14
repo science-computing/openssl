@@ -364,6 +364,24 @@ char *CRYPTO_strdup(const char *str, const char *file, int line)
     return ret;
 }
 
+char *CRYPTO_strndup(const char *str, size_t s, const char* file, int line)
+{
+    size_t maxlen;
+    char *ret;
+
+    if (str == NULL)
+        return NULL;
+
+    maxlen = OPENSSL_strnlen(str, s);
+
+    ret = CRYPTO_malloc(maxlen + 1, file, line);
+    if (ret) {
+        memcpy(ret, str, maxlen);
+        ret[maxlen] = '\0';
+    }
+    return ret;
+}
+
 void *CRYPTO_realloc(void *str, int num, const char *file, int line)
 {
     void *ret = NULL;
