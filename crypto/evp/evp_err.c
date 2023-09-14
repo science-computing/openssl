@@ -1,6 +1,6 @@
 /* crypto/evp/evp_err.c */
 /* ====================================================================
- * Copyright (c) 1999-2019 The OpenSSL Project.  All rights reserved.
+ * Copyright (c) 1999-2021 The OpenSSL Project.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -215,6 +215,8 @@ static ERR_STRING_DATA EVP_str_reasons[] = {
     {ERR_REASON(EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE),
      "operation not supported for this keytype"},
     {ERR_REASON(EVP_R_OPERATON_NOT_INITIALIZED), "operaton not initialized"},
+    {ERR_REASON(EVP_R_OUTPUT_WOULD_OVERFLOW),
+    "output would overflow"},
     {ERR_REASON(EVP_R_PKCS8_UNKNOWN_BROKEN_TYPE),
      "pkcs8 unknown broken type"},
     {ERR_REASON(EVP_R_PRIVATE_KEY_DECODE_ERROR), "private key decode error"},
